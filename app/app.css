@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "SpeziaMono";
+  src: url("/fonts/Spezia-Mono-Web-Medium.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SpeziaNarrow";
+  src: url("/fonts/Spezia-Narrow-Web-SemiBold.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SpeziaMedium";
+  src: url("/fonts/Spezia-Web-Medium.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "RoobertMedium";
+  src: url("/fonts/Roobert-Medium.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: "SpeziaMono", monospace;
+  scroll-behavior: smooth;
+  background: #f9f4eb;
+  scroll-snap-type: y proximity;
+}
+
+
+
+@theme {
+  
+}
+
+@layer components {
+
+  @keyframes elastic-radius {
+    0% {
+      border-radius: 9999px;
+      transform: scale(1);
+      
+    }
+
+    90% {
+      transform: scale(1.05);
+    }
+    100% {
+      border-radius: 9999px;
+      transform: scale(1);
+      background: black;
+      color: #f0ece5;
+    }
+  }
+
+  /* .bounce-radius-hover:hover {
+    animation: bounce-radius 0.2s ease-out forwards;
+    background-color: black;
+    color: #f0ece5;
+  } */
+
+  header {
+    .nav-item {
+      @apply py-[8px] px-[12px] bg-[#f0ece5] text-black transition-all duration-200 rounded-[3px];
+    }
+
+    .nav-item:hover {
+      /* @apply text-[#f0ece5]; */
+      animation: elastic-radius 0.2s ease-out forwards;
+    }
+  }
+
+  .skills-heading {
+    font-size: clamp(1.1875rem, 0.9vw, 3.5rem);
+  }
+
+  .landing-intro-para {
+    font-size: clamp(1.5rem, 1vw, 3.5rem);
+  }
+
+  .trail-dot {
+  filter: blur(1px);
+  transform: translateY(0);
+  transition: opacity 0.2s ease-out;
+}
+
+}
