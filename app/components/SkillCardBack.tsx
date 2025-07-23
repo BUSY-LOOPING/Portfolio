@@ -4,13 +4,14 @@ interface SkillCardBackProps {
   color: string;
   coverImg: string;
   coverText: string;
+  className?: string;
 }
 
-const SkillCardBack = ({ color, coverImg, coverText }: SkillCardBackProps) => {
+const SkillCardBack = ({ color, coverImg, coverText, className }: SkillCardBackProps) => {
   return (
     <div
       style={{ backgroundColor: color }}
-      className={`w-[22vw] aspect-[3/4.5] max-w-[11rem] rounded-[8px] flex flex-col justify-between items-center px-[1rem] py-[0.8rem]`}
+      className={`w-[22vw] aspect-[3/4.5] max-w-[11rem] rounded-[8px] flex flex-col justify-between items-center px-[1rem] py-[0.8rem] ${className ?? ''}`}
     >
       <div  className="w-full flex flex-row justify-between items-center">
         <h4 className="p-0 text-[0.4rem]">{coverText}</h4>

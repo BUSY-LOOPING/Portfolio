@@ -98,4 +98,14 @@ body, html {
   transition: opacity 0.2s ease-out;
 }
 
+.cards-container{
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+.cards-container > * {
+  grid-area: 1 / 1;
+}
+
 }
