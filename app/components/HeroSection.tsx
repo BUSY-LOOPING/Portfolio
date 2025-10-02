@@ -107,128 +107,123 @@ const HeroSection = () => {
     });
   }, []);
 
+  
+
   return (
-    <section className="min-h-[100vh] lg:px-[4rem] md:px-[3rem] px-[2rem] mt-[3rem] flex flex-col">
-      <div className="w-full flex space-between items-center mb-6">
-        <div className="flex flex-row gap-[1.5rem]">
-          <img
-            src="/icons/kokeshi_cross_dark.svg"
-            alt="kokeshi cross"
-            className="w-2.5 h-2.5"
-          />
-          <img
-            src="/icons/kokeshi_cross_dark.svg"
-            alt="kokeshi cross"
-            className="w-2.5 h-2.5"
-          />
-          <img
-            src="/icons/kokeshi_cross_dark.svg"
-            alt="kokeshi cross"
-            className="w-2.5 h-2.5"
-          />
-        </div>
-
-        <div className="flex flex-1 justify-center gap-[15rem]">
-          <img
-            src="/icons/kokeshi_cross_dark.svg"
-            alt="kokeshi cross"
-            className="w-2.5 h-2.5"
-          />
-          <img
-            src="/icons/kokeshi_cross_dark.svg"
-            alt="kokeshi cross"
-            className="w-2.5 h-2.5"
-          />
-          <img
-            src="/icons/kokeshi_cross_dark.svg"
-            alt="kokeshi cross"
-            className="w-2.5 h-2.5"
-          />
-        </div>
-
-        <div className="flex flex-row gap-[1.5rem]">
-          <img
-            src="/icons/kokeshi_cross_dark.svg"
-            alt="kokeshi cross"
-            className="w-2.5 h-2.5"
-          />
-          <img
-            src="/icons/kokeshi_cross_dark.svg"
-            alt="kokeshi cross"
-            className="w-2.5 h-2.5"
-          />
-          <img
-            src="/icons/kokeshi_cross_dark.svg"
-            alt="kokeshi cross"
-            className="w-2.5 h-2.5"
-          />
-        </div>
-      </div>
-
-      <div className="w-full justify-center items-center flex flex-col mb-[3rem]">
-        <div className="flex flex-col items-start">
-          <p className="">Hello I'm</p>
-          <h1
-            style={{ fontSize: "max(10rem, 13vw)" }}
-            className="font-[SpeziaNarrow] text-[17rem] leading-none -tracking-[18px] -ml-[20px] -mt-[25px]"
-          >
-            DHRUV YADAV
-          </h1>
-        </div>
-      </div>
-
-      <div ref={cards} className="flex flex-row justify-center items-center gap-[1.5rem] mb-[3rem] ">
-        <div ref={frontEndRef}>
-          <SkillCardBack
-            color="#e5daf6"
-            coverImg="./icons/kokeshi_cross_dark.svg"
-            coverText="FRONT END"
-          />
-        </div>
-        <div ref={backEndRef}>
-          <SkillCardBack
-            color="#ffd2f3"
-            coverImg="./icons/kokeshi_cross_dark.svg"
-            coverText="BACK END"
-          />
-        </div>
-        <div ref={aiMlRef}>
-          <SkillCardBack
-            color="#fcdeac"
-            coverImg="./icons/kokeshi_cross_dark.svg"
-            coverText="AI/ML"
-          />
-        </div>
-      </div>
-
-      {/* <div className="flex-1 shrink"></div> */}
-
-      <div className="mt-[5rem] flex flex-row w-full">
-        <article className="w-[40%] font-[SpeziaMedium]">
-          <h2 className="inline-block text-[0.7rem] py-1 px-1.5 uppercase bg-black text-[#f0ece5] rounded-[3px]">
-            About me
-          </h2>
-          <p className="landing-intro-para leading-none -tracking-[1px]">
-            Nice to meet you. I’m Dhruv, full-stack developer & machine learning
-            explorer based in Toronto building tools and apps that just work —
-            and scale.
-          </p>
-        </article>
-
-        <div className="flex justify-center items-center w-[20%]">
-          <div className="relative">
-            {/* Main dot */}
-            <div
-              ref={dotRef}
-              className="rounded-full bg-black h-1.5 aspect-square relative z-10"
-            ></div>
-
-            {/* Trail dot */}
-            <div className="trail-dot absolute top-0 left-0 rounded-full bg-black/40 h-1.5 aspect-square z-0"></div>
+    <section className="h-[100vh] lg:px-[4rem] md:px-[3rem] px-[2rem]">
+      <div className="h-[90vh] mt-[3rem] flex flex-col">
+        <div className="w-full flex space-between items-center mb-6">
+          <div className="flex flex-row gap-[1.5rem]">
+            <img
+              src="/icons/kokeshi_cross_dark.svg"
+              alt="kokeshi cross"
+              className="w-2.5 h-2.5"
+            />
+            <img
+              src="/icons/kokeshi_cross_dark.svg"
+              alt="kokeshi cross"
+              className="w-2.5 h-2.5"
+            />
+            <img
+              src="/icons/kokeshi_cross_dark.svg"
+              alt="kokeshi cross"
+              className="w-2.5 h-2.5"
+            />
+          </div>
+          <div className="flex flex-1 justify-center gap-[15rem]">
+            <img
+              src="/icons/kokeshi_cross_dark.svg"
+              alt="kokeshi cross"
+              className="w-2.5 h-2.5"
+            />
+            <img
+              src="/icons/kokeshi_cross_dark.svg"
+              alt="kokeshi cross"
+              className="w-2.5 h-2.5"
+            />
+            <img
+              src="/icons/kokeshi_cross_dark.svg"
+              alt="kokeshi cross"
+              className="w-2.5 h-2.5"
+            />
+          </div>
+          <div className="flex flex-row gap-[1.5rem]">
+            <img
+              src="/icons/kokeshi_cross_dark.svg"
+              alt="kokeshi cross"
+              className="w-2.5 h-2.5"
+            />
+            <img
+              src="/icons/kokeshi_cross_dark.svg"
+              alt="kokeshi cross"
+              className="w-2.5 h-2.5"
+            />
+            <img
+              src="/icons/kokeshi_cross_dark.svg"
+              alt="kokeshi cross"
+              className="w-2.5 h-2.5"
+            />
           </div>
         </div>
-        <div className="w-[40%] text-[0.7rem] leading-none -tracking-[1px] flex justify-end items-end">
-          <p>UI/UX & WEB DEVELOPER</p>
+        <div className="w-full justify-center items-center flex flex-col">
+          <div className="flex flex-col items-start">
+            <p className="">Hello I'm</p>
+            <h1
+              style={{ fontSize: "max(10rem, 13vw)" }}
+              className="font-[SpeziaNarrow] text-[17rem] leading-none -tracking-[18px] -ml-[20px] -mt-[25px]"
+            >
+              DHRUV YADAV
+            </h1>
+          </div>
+        </div>
+        <div ref={cards} className="flex-1 flex flex-row justify-center items-center gap-[1.5rem] mb-[3rem] ">
+          <div ref={frontEndRef}>
+            <SkillCardBack
+              color="#e5daf6"
+              coverImg="./icons/kokeshi_cross_dark.svg"
+              coverText="FRONT END"
+            />
+          </div>
+          <div ref={backEndRef}>
+            <SkillCardBack
+              color="#ffd2f3"
+              coverImg="./icons/kokeshi_cross_dark.svg"
+              coverText="BACK END"
+            />
+          </div>
+          <div ref={aiMlRef}>
+            <SkillCardBack
+              color="#fcdeac"
+              coverImg="./icons/kokeshi_cross_dark.svg"
+              coverText="AI/ML"
+            />
+          </div>
+        </div>
+        <div className="mb-[2rem] flex flex-row w-full items-end">
+          <article className="w-[40%] font-[SpeziaMedium]">
+            <h2 className="inline-block text-[0.7rem] md:text-[0.8rem] lg:text-[0.9rem] xl:text-[1rem] py-1 px-1.5 uppercase bg-black text-[#f0ece5] rounded-[3px]">
+              About me
+            </h2>
+            <p className="landing-intro-para leading-none -tracking-[1px]">
+              Nice to meet you. I’m Dhruv, full-stack developer & machine learning
+              explorer based in Toronto building tools and apps that just work —
+              and scale.
+            </p>
+          </article>
+          <div className="flex justify-center items-center w-[20%]">
+            <div className="relative">
+              {/* Main dot */}
+              <div
+                ref={dotRef}
+                className="rounded-full bg-black h-1.5 aspect-square relative z-10"
+              ></div>
+              {/* Trail dot */}
+              <div className="trail-dot absolute top-0 left-0 rounded-full bg-black/40 h-1.5 aspect-square z-0"></div>
+            </div>
+          </div>
+          <div className="w-[40%] text-[0.7rem] md:text-[0.8rem] lg:text-[0.9rem] xl:text-[1rem] leading-none -tracking-[1px] flex justify-end">
+            <p>UI/UX & WEB DEVELOPER</p>
+          </div>
         </div>
       </div>
     </section>

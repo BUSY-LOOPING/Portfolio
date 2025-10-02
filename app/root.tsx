@@ -7,7 +7,7 @@ import {
   ScrollRestoration,
 } from "react-router";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollTrigger } from "gsap/all";
 
 import React, { useEffect } from "react";
 import type { Route } from "./+types/root";
