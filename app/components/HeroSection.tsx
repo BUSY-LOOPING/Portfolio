@@ -62,9 +62,9 @@ const HeroSection = () => {
     cards.forEach((card, index) => {
       if (!card.current) return;
 
-      gsap.to(card.current, { 
+      gsap.to(card.current, {
         ease: "power1.inOut",
-        zIndex: 10-index,
+        zIndex: 10 - index,
         y: index === 0 ? "+=240" : index === 1 ? "+=210" : "+=180",
         x: index === 0 ? 120 : index === 1 ? 0 : -120,
         rotation: index === 0 ? -10 : index === 1 ? 5 : 10,
@@ -88,29 +88,25 @@ const HeroSection = () => {
             t1.resume();
             t2.resume();
             t3.resume();
-          }
+          },
         },
-
       });
 
       gsap.to(card.current, {
-        
-      opacity: 0,
-      ease: "power1.inOut",
-      scrollTrigger: {
-        trigger: card.current,
-        start: "top 15%",  // fade starts when scroll reaches 10% from top
-        end: "bottom top",   // tweak this range as needed
-        scrub: true,
-      },
-    });
+        opacity: 0,
+        ease: "power1.inOut",
+        scrollTrigger: {
+          trigger: card.current,
+          start: "top 15%", // fade starts when scroll reaches 10% from top
+          end: "bottom top", // tweak this range as needed
+          scrub: true,
+        },
+      });
     });
   }, []);
 
-  
-
   return (
-    <section className="h-[100vh] lg:px-[4rem] md:px-[3rem] px-[2rem]">
+    <section className="h-[100vh] lg:px-[4rem] md:px-[3rem] px-[2rem] pt-[3rem]">
       <div className="h-[90vh] mt-[3rem] flex flex-col">
         <div className="w-full flex space-between items-center mb-6">
           <div className="flex flex-row gap-[1.5rem]">
@@ -176,9 +172,13 @@ const HeroSection = () => {
             </h1>
           </div>
         </div>
-        <div ref={cards} className="flex-1 flex flex-row justify-center items-center gap-[1.5rem] mb-[3rem] ">
+        <div
+          ref={cards}
+          className="flex-1 flex flex-row justify-center items-center gap-[1.5rem] mb-[3rem] "
+        >
           <div ref={frontEndRef}>
             <SkillCardBack
+              className="max-w-[11rem]"
               color="#e5daf6"
               coverImg="./icons/kokeshi_cross_dark.svg"
               coverText="FRONT END"
@@ -186,6 +186,7 @@ const HeroSection = () => {
           </div>
           <div ref={backEndRef}>
             <SkillCardBack
+              className="max-w-[11rem]"
               color="#ffd2f3"
               coverImg="./icons/kokeshi_cross_dark.svg"
               coverText="BACK END"
@@ -193,6 +194,7 @@ const HeroSection = () => {
           </div>
           <div ref={aiMlRef}>
             <SkillCardBack
+              className="max-w-[11rem]"
               color="#fcdeac"
               coverImg="./icons/kokeshi_cross_dark.svg"
               coverText="AI/ML"
@@ -205,9 +207,9 @@ const HeroSection = () => {
               About me
             </h2>
             <p className="landing-intro-para leading-none -tracking-[1px]">
-              Nice to meet you. I’m Dhruv, full-stack developer & machine learning
-              explorer based in Toronto building tools and apps that just work —
-              and scale.
+              Nice to meet you. I’m Dhruv, full-stack developer & machine
+              learning explorer based in Toronto building tools and apps that
+              just work — and scale.
             </p>
           </article>
           <div className="flex justify-center items-center w-[20%]">

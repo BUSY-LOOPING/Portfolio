@@ -32,8 +32,9 @@
   font-display: swap;
 }
 
-body, html {
-  font-size: clamp(1rem, 2vw, 1.125rem);
+body,
+html {
+  font-size: clamp(0.6rem, 2vw, 1.125rem);
   margin: 0;
   padding: 0;
   font-family: "SpeziaMono", monospace;
@@ -44,22 +45,29 @@ body, html {
 
 
 
-@theme {
-  
-}
+@theme {}
 
 @layer components {
+  :root {
+    --dark: #000;
+    --light: #f9f4eb;
+    --light2: #f0ece5;
+    --accent-l: #e6d9f5;
+    --accent-2: #ffd1f1;
+    --accent-3: #fce0ae;
+  }
 
   @keyframes elastic-radius {
     0% {
       border-radius: 9999px;
       transform: scale(1);
-      
+
     }
 
     90% {
       transform: scale(1.05);
     }
+
     100% {
       border-radius: 9999px;
       transform: scale(1);
@@ -68,20 +76,33 @@ body, html {
     }
   }
 
-  /* .bounce-radius-hover:hover {
-    animation: bounce-radius 0.2s ease-out forwards;
-    background-color: black;
-    color: #f0ece5;
-  } */
-
   header {
+    position: fixed;
+    top:0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+
     .nav-item {
       @apply py-[8px] px-[12px] bg-[#f0ece5] text-black transition-all duration-200 rounded-[3px];
     }
 
     .nav-item:hover {
-      /* @apply text-[#f0ece5]; */
       animation: elastic-radius 0.2s ease-out forwards;
+    }
+
+    .nav-link:hover {
+      animation: text-bounce 0.4s ease-in-out;
+    }
+
+    .logo-link:hover div {
+      transform: translateY(-2px);
+      transition: transform 0.2s ease;
+    }
+
+    .icon-link:hover div {
+      transform: scale(1.1);
+      transition: transform 0.2s ease;
     }
   }
 
@@ -94,25 +115,157 @@ body, html {
   }
 
   .trail-dot {
-  filter: blur(1px);
-  transform: translateY(0);
-  transition: opacity 0.2s ease-out;
-}
+    filter: blur(1px);
+    transform: translateY(0);
+    transition: opacity 0.2s ease-out;
+  }
 
-.cards-container{
-  display: grid;
-  place-items: center;
-  position: relative;
-}
+  .cards-container {
+    display: grid;
+    place-items: center;
+    position: relative;
+  }
 
-.cards-container > * {
-  grid-area: 1 / 1;
-}
+  .pin-container {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+  }
 
-.pin-container {
-  height: 100vh;
-  width: 100%;
-  position: relative;
-}
+  section {
+    padding-top: 7rem;
+    position: relative;
+    overflow: hidden;
+  }
 
+  section:not(.cards) {
+    position: relative;
+    z-index: 2;
+   
+  }
+
+  .skills-header {
+    position: relative;
+    width: 100%;
+    transform: translateY(400%);
+    will-change: transform;
+  }
+
+  .cards {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100svh;
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+    background-color: var(--light);
+  }
+
+  .cards-container {
+    position: relative;
+    width: 75vw;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+  }
+
+  .cards-container .card {
+    flex: 1;
+    position: relative;
+    aspect-ratio: 5/7;
+    perspective: 1000px;
+    container-type: inline-size;
+  }
+
+  .cards-container .card .card-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    animation: floating 2s infinite ease-in-out;
+  }
+
+  @keyframes floating {
+    0%,
+    100% {
+      transform: translate(-50%, -50%);
+    }
+
+    50% {
+      transform: translate(-50%, -52%);
+    }
+
+    100% {
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  #skill-card-1 .card-wrapper {
+    animation-delay: 0s;
+  }
+
+  #skill-card-2 .card-wrapper {
+    animation-delay: 0.25s;
+  }
+
+  #skill-card-3 .card-wrapper {
+    animation-delay: 0.5s;
+  }
+
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+  }
+
+  .flip-card-front,
+  .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+    backface-visibility: hidden;
+    overflow: hidden;
+  }
+
+  .flip-card-front {
+  }
+
+  #skill-card-1 .flip-card-front {
+    background-color: var(--accent-l);
+  }
+
+  #skill-card-1 .flip-card-front {
+    background-color: var(--accent-2);
+  }
+
+  #skill-card-1 .flip-card-front {
+    background-color: var(--accent-3);
+  }
+
+  .flip-card-back {
+    transform: rotateY(180deg);
+  }
+
+  #skill-card-1 {
+    transform: translateX(100%) translateY(-100%) rotate(-5deg) scale(0.25);
+    z-index: 5;
+  }
+
+  #skill-card-2 {
+    transform: translateX(0%) translateY(-100%) rotate(0deg) scale(0.25);
+    z-index: 4;
+  }
+
+  #skill-card-3 {
+    transform: translateX(-100%) translateY(-100%) rotate(5deg) scale(0.25);
+    z-index: 3;
+  }
 }
