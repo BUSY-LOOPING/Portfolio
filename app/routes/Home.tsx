@@ -1,5 +1,5 @@
 import React from "react";
-import { HeroSection, ProjectsSection, SkillsSection } from "~/components";
+import { HeroSection, ProjectsSection, SkillsSection, UpperFooter } from "~/components";
 
 const Home = () => {
   return (
@@ -7,6 +7,7 @@ const Home = () => {
     <HeroSection/>
     <ProjectsSection/>
     <SkillsSection/>
+    <UpperFooter/>
   </>
   );
     

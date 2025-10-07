@@ -76,9 +76,19 @@ html {
     }
   }
 
+  /* main {
+    position: relative;
+    z-index: 1;
+  } */
+
+  footer {
+    position: relative;
+    z-index: 2;
+  }
+
   header {
     position: fixed;
-    top:0;
+    top: 0;
     left: 0;
     right: 0;
     z-index: 100;
@@ -141,7 +151,7 @@ html {
   section:not(.cards) {
     position: relative;
     z-index: 2;
-   
+
   }
 
   .skills-header {
@@ -192,6 +202,7 @@ html {
   }
 
   @keyframes floating {
+
     0%,
     100% {
       transform: translate(-50%, -50%);
@@ -235,8 +246,7 @@ html {
     overflow: hidden;
   }
 
-  .flip-card-front {
-  }
+  .flip-card-front {}
 
   #skill-card-1 .flip-card-front {
     background-color: var(--accent-l);

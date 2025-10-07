@@ -5,3 +5,4 @@ export {default as ProjectsSection} from "./ProjectsSection";
 export {default as SkillsSection} from "./SkillsSection";
 export { default as SkillCardBack } from "./SkillCardFront";
 export { default as SkillCardFront } from "./SkillCardBack";
+export { default as UpperFooter } from "./UpperFooter";
