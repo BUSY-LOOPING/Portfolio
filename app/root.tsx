@@ -38,16 +38,23 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 
 export default function App() {
- useEffect(() => {
+  useEffect(() => {
     let burst: any;
     let handleClick: (e: MouseEvent) => void;
+    let lenisScroll = 0;
 
     (async () => {
       const mojs = await import("@mojs/core");
+      
+      // Create a fixed container for mojs
+      const container = document.createElement('div');
+      container.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999;';
+      document.body.appendChild(container);
+      
       burst = new mojs.Burst({
-        parent: document.body,
-        left:0,
-        top:0,
+        parent: container,
+        left: 0,
+        top: 0,
         count: 4,
         radius: { 0: 50 },
         degree: -60,
@@ -61,11 +68,20 @@ export default function App() {
         },
       });
 
+      // Track Lenis scroll position
+      if (window.lenis) {
+        window.lenis.on('scroll', ({ scroll }: { scroll: number }) => {
+          lenisScroll = scroll;
+        });
+      }
+
       handleClick = (e: MouseEvent) => {
         const isDark = window.getComputedStyle(e.target as Element).backgroundColor === "rgb(0, 0, 0)";
+        
+        // Use clientY instead of pageY for fixed positioning
         burst.tune({
-          x: e.pageX,
-          y: e.pageY,
+          x: e.clientX,
+          y: e.clientY,
           children: { stroke: isDark ? "#fff" : "#000" },
         }).replay();
       };
@@ -78,10 +94,9 @@ export default function App() {
     };
   }, []);
 
-  return (
-      <Outlet/>
-  );
+  return <Outlet />;
 }
+
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   let message = "Oops!";
