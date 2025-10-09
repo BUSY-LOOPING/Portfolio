@@ -25,16 +25,22 @@ const SkillsSection = () => {
       const smoothStep = (p: number) => p * p * (3 - 2 * p);
 
       ScrollTrigger.create({
+        invalidateOnRefresh: true,
+        // markers:true,
         trigger: ".skills",
-        start: "top top",
+        start: `+=${window.innerHeight * 3}`,
+        // start: "top top",
         end: `+=${window.innerHeight * 4}`,
         pin: ".skills",
         pinSpacing: true,
       });
 
       ScrollTrigger.create({
+        invalidateOnRefresh: true,
+        
         trigger: ".skills",
-        start: "top top",
+        start: `+=${window.innerHeight * 3}`,
+        // start: "top top",
         end: `+=${window.innerHeight * 4}`,
         onLeave: () => {
           console.log("leave");
@@ -64,19 +70,24 @@ const SkillsSection = () => {
       });
 
       ScrollTrigger.create({
+        invalidateOnRefresh: true,
         trigger: ".skills",
-        start: "top bottom",
+        // start: "top top",
+        start: `+=${window.innerHeight * 2.5}`,
         end: `+=${window.innerHeight * 4}`,
         scrub: 1,
         onUpdate: (self) => {
+          console.log('Skills progress', self.progress);
           const progress = self.progress;
 
-          const headerProgress = gsap.utils.clamp(0, 1, progress / 0.9);
+          const headerProgress = gsap.utils.clamp(0, 1, progress / 0.5);
           const headerY = gsap.utils.interpolate(
             "400%",
             "0%",
             smoothStep(headerProgress)
           );
+
+          console.log('headerY', headerY);
           gsap.set(".skills-header", {
             y: headerY,
           });
@@ -171,6 +182,8 @@ const SkillsSection = () => {
           });
         },
       });
+
+      ScrollTrigger.refresh();
     }, containerRef);
 
     return () => {
@@ -181,7 +194,7 @@ const SkillsSection = () => {
 
   return (
     <div ref={containerRef}>
-      <section className="mt-[4rem] lg:px-[4rem] md:px-[3rem] px-[2rem] skills">
+      <section className="relative mt-[4rem] lg:px-[4rem] md:px-[3rem] px-[2rem] skills">
         <div className="relative flex items-center skills-header">
           <h2 className="text-[clamp(1rem,2vw,1.2rem)] font-[SpeziaMedium] text-left">
             What I Do

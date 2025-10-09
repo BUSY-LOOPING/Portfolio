@@ -93,13 +93,13 @@ const Header = () => {
             <a href="#intro" className="nav-link">INTRO</a>
           </li>
           <li className="nav-item">
-            <a href="#projects" className="nav-link">PROJECTS</a>
+            <a href="#projects" className="nav-link">PROCESS</a>
           </li>
           <li className="nav-item">
-            <a href="#values" className="nav-link">VALUES</a>
+            <a href="#values" className="nav-link">WORKS</a>
           </li>
           <li className="nav-item">
-            <a href="#background" className="nav-link">BACKGROUND</a>
+            <a href="#background" className="nav-link">CONTACT</a>
           </li>
         </ul>
       </nav>
