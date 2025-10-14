@@ -176,7 +176,6 @@ const ProjectsSection = () => {
           ease: "power2.inOut",
         },
         onUpdate: (self) => {
-          console.log("Progress", self.progress);
           if (!isHovering) {
             animateRulerForProgress(self.progress);
           }

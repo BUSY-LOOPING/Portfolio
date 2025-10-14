@@ -209,9 +209,10 @@ const SkillsSection = () => {
           <div className="card" id="skill-card-1">
             <div className="card-wrapper">
               <div className="flip-card-inner">
-                <SkillCardFront
+                <SkillCardBack
                   skillsList={[
                     "React",
+                    "TypeScript",
                     "TypeScript",
                     "Tailwind",
                     "GSAP",
@@ -221,17 +222,10 @@ const SkillsSection = () => {
                   coverText="Front End"
                   className="flip-card-back"
                 />
-                <SkillCardBack
+                <SkillCardFront
                   color="#e6d9f5"
                   coverImg="./icons/kokeshi_cross_dark.svg"
                   coverText="Front End"
-                  skillsList={[
-                    "React",
-                    "TypeScript",
-                    "Tailwind",
-                    "GSAP",
-                    "Next.js",
-                  ]}
                   className="flip-card-front"
                 />
               </div>
@@ -241,9 +235,10 @@ const SkillsSection = () => {
           <div className="card" id="skill-card-2">
             <div className="card-wrapper">
               <div className="flip-card-inner">
-                <SkillCardFront
+                <SkillCardBack
                   skillsList={[
                     "Node.js",
+                    "Express",
                     "Express",
                     "MySQL",
                     "PostgreSQL",
@@ -253,17 +248,10 @@ const SkillsSection = () => {
                   coverText="Back End"
                   className="flip-card-back"
                 />
-                <SkillCardBack
+                <SkillCardFront
                   color="#ffd1f1"
                   coverImg="./icons/kokeshi_cross_dark.svg"
                   coverText="Back End"
-                  skillsList={[
-                    "Node.js",
-                    "Express",
-                    "MySQL",
-                    "PostgreSQL",
-                    "Docker",
-                  ]}
                   className="flip-card-front"
                 />
               </div>
@@ -273,10 +261,11 @@ const SkillsSection = () => {
           <div className="card" id="skill-card-3">
             <div className="card-wrapper">
               <div className="flip-card-inner">
-                <SkillCardFront
+                <SkillCardBack
                   skillsList={[
                     "Python",
                     "TensorFlow",
+                    "PyTorch",
                     "PyTorch",
                     "AWS",
                     "MLOps",
@@ -285,17 +274,10 @@ const SkillsSection = () => {
                   coverText="AI/ML"
                   className="flip-card-back"
                 />
-                <SkillCardBack
+                <SkillCardFront
                   color="#fce0ae"
                   coverImg="./icons/kokeshi_cross_dark.svg"
                   coverText="AI/ML"
-                  skillsList={[
-                    "Python",
-                    "TensorFlow",
-                    "PyTorch",
-                    "AWS",
-                    "MLOps",
-                  ]}
                   className="flip-card-front"
                 />
               </div>

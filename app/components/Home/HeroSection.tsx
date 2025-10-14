@@ -1,4 +1,4 @@
-import { SkillCardBack } from "~/components";
+import { SkillCardBack, SkillCardFront } from "~/components";
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 
@@ -54,9 +54,9 @@ const HeroSection = () => {
       return tween;
     };
 
-    let t1 = float(frontEndRef.current, 0);
-    let t2 = float(backEndRef.current, 0.3);
-    let t3 = float(aiMlRef.current, 0.6);
+    // let t1 = float(frontEndRef.current, 0);
+    // let t2 = float(backEndRef.current, 0.3);
+    // let t3 = float(aiMlRef.current, 0.6);
 
     const cards = [frontEndRef, backEndRef, aiMlRef];
     cards.forEach((card, index) => {
@@ -70,24 +70,24 @@ const HeroSection = () => {
         rotation: index === 0 ? -10 : index === 1 ? 5 : 10,
         scale: 0.7,
         scrollTrigger: {
-          trigger: card.current,
+          trigger: "#hero-cards-wrapper",
           scrub: true,
           start: "bottom 60%",
           end: "bottom top",
           onEnter: () => {
-            t1.pause();
-            t2.pause();
-            t3.pause();
+            // t1.pause();
+            // t2.pause();
+            // t3.pause();
           },
-          // onLeave: () => {
-          //   t1.resume();
-          //   t2.resume();
-          //   t3.resume();
-          // },
+          onLeave: () => {
+            // t1.resume();
+            // t2.resume();
+            // t3.resume();
+          },
           onLeaveBack: () => {
-            t1.resume();
-            t2.resume();
-            t3.resume();
+            // t1.resume();
+            // t2.resume();
+            // t3.resume();
           },
         },
       });
@@ -173,28 +173,32 @@ const HeroSection = () => {
           </div>
         </div>
         <div
+          id="hero-cards-wrapper"
           ref={cards}
           className="flex-1 flex flex-row justify-center items-center gap-[1.5rem] mb-[3rem] "
         >
           <div ref={frontEndRef}>
-            <SkillCardBack
-              className="max-w-[11rem]"
+            <SkillCardFront
+              id="hero-card-1"
+              className="max-w-[11rem] hero-cards"
               color="#e5daf6"
               coverImg="./icons/kokeshi_cross_dark.svg"
               coverText="FRONT END"
             />
           </div>
           <div ref={backEndRef}>
-            <SkillCardBack
-              className="max-w-[11rem]"
+            <SkillCardFront
+            id="hero-card-2"
+              className="max-w-[11rem] hero-cards"
               color="#ffd2f3"
               coverImg="./icons/kokeshi_cross_dark.svg"
               coverText="BACK END"
             />
           </div>
           <div ref={aiMlRef}>
-            <SkillCardBack
-              className="max-w-[11rem]"
+            <SkillCardFront
+            id="hero-card-3"
+              className="max-w-[11rem] hero-cards"
               color="#fcdeac"
               coverImg="./icons/kokeshi_cross_dark.svg"
               coverText="AI/ML"

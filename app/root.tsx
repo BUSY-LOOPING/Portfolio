@@ -8,13 +8,22 @@ import {
 } from "react-router";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
+import Lenis from "lenis";
 
 import React, { useEffect } from "react";
 import type { Route } from "./+types/root";
 import "./app.css";
+// import "lenis/dist/lenis.css"; // Import Lenis CSS
 
 if (typeof window !== "undefined" && gsap?.registerPlugin) {
   gsap.registerPlugin(ScrollTrigger);
+}
+
+// Declare Lenis on window type
+declare global {
+  interface Window {
+    lenis?: Lenis;
+  }
 }
 
 export function Layout({ children }: { children: React.ReactNode }) {
@@ -35,14 +44,35 @@ export function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
-
-
 export default function App() {
   useEffect(() => {
     let burst: any;
     let handleClick: (e: MouseEvent) => void;
-    let lenisScroll = 0;
+    let lenis: Lenis;
 
+    // Initialize Lenis smooth scroll
+    lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: "vertical",
+      smoothWheel: true,
+      smoothTouch: false,
+      touchMultiplier: 2,
+    });
+
+    // Store Lenis instance globally
+    window.lenis = lenis;
+
+    // Integrate Lenis with GSAP ScrollTrigger
+    lenis.on("scroll", ScrollTrigger.update);
+
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+
+    gsap.ticker.lagSmoothing(0);
+
+    // Initialize mojs burst animation
     (async () => {
       const mojs = await import("@mojs/core");
       
@@ -56,24 +86,19 @@ export default function App() {
         left: 0,
         top: 0,
         count: 4,
-        radius: { 0: 50 },
-        degree: -60,
-        angle: 30,
+        radius: { 0: 40 },
+        degree: 120, // Changed from -120 to 120 for right rotation
+        rotate: -80, // Rotate the entire burst 90 degrees to the right
         children: {
           shape: "line",
           stroke: "#000",
           strokeWidth: 7,
           scale: { 1: 0 },
-          duration: 500,
+          duration: 600,
+          // rotate: -15,
+          degreeShift: 0, // Can adjust this for additional rotation
         },
       });
-
-      // Track Lenis scroll position
-      if (window.lenis) {
-        window.lenis.on('scroll', ({ scroll }: { scroll: number }) => {
-          lenisScroll = scroll;
-        });
-      }
 
       handleClick = (e: MouseEvent) => {
         const isDark = window.getComputedStyle(e.target as Element).backgroundColor === "rgb(0, 0, 0)";
@@ -90,13 +115,18 @@ export default function App() {
     })();
 
     return () => {
+      // Cleanup
       if (handleClick) document.removeEventListener("click", handleClick);
+      if (lenis) {
+        lenis.destroy();
+        delete window.lenis;
+      }
+      gsap.ticker.remove((time) => lenis.raf(time * 1000));
     };
   }, []);
 
   return <Outlet />;
 }
-
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   let message = "Oops!";

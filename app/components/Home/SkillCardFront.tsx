@@ -5,24 +5,37 @@ interface SkillCardFrontProps {
   coverImg: string;
   coverText: string;
   className?: string;
+  id?: string;
 }
 
-const SkillCardFront = ({ color, coverImg, coverText, className }: SkillCardFrontProps) => {
+const SkillCardFront = ({
+  color,
+  coverImg,
+  coverText,
+  className,
+  id,
+}: SkillCardFrontProps) => {
   return (
     <div
+      id={id}
       style={{ backgroundColor: color }}
-      className={`w-[22vw] aspect-[3/4.5] rounded-[8px] flex flex-col items-center justify-between px-[1rem] py-[0.8rem] ${className ?? ''}`}
+      className={`w-[22vw] aspect-[3/4.5] rounded-[8px] flex flex-col items-center justify-between px-[1rem] py-[0.8rem] ${
+        className ?? ""
+      }`}
     >
-      <div  className="w-full flex flex-row justify-between items-center">
+      <div className="w-full flex flex-row justify-between items-center">
         <h4 className="uppercase p-0 text-[0.4rem]">{coverText}</h4>
         <img src={coverImg} alt="cover" className="w-2 h-2" />
       </div>
       <img src={coverImg} alt={coverText} className="w-[30%] aspect-[1/1]" />
-      <div style={{ transform: "scale(-1, -1)" }}  className="w-full flex flex-row justify-between items-center">
+      <div
+        style={{ transform: "scale(-1, -1)" }}
+        className="w-full flex flex-row justify-between items-center"
+      >
         <p className="p-0 text-[0.4rem]">{coverText}</p>
         <div className="flex flex-row gap-2 justify-center items-center">
           <svg
-            style={{ transform: "scale(-1, -1)" }} 
+            style={{ transform: "scale(-1, -1)" }}
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 21 16"
             fill="none"
@@ -37,8 +50,7 @@ const SkillCardFront = ({ color, coverImg, coverText, className }: SkillCardFron
           <span className="text-[0.4rem]">HTML</span>
           <img src={coverImg} alt="cover" className="w-2 h-2" />
         </div>
-        
-      </div>  
+      </div>
     </div>
   );
 };

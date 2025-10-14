@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import { NavLink } from "react-router";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -21,35 +22,29 @@ const Header = () => {
             gsap.to(logoRef.current, {
               opacity: 0,
               x: -50,
-              // duration: 0.3,
               ease: "power2.out",
             });
             gsap.to(iconRef.current, {
               opacity: 1,
               x: 0,
               rotation: 0,
-              // duration: 0.4,
               ease: "power2.out",
             });
           } else {
             gsap.to(logoRef.current, {
               opacity: 1,
               x: 0,
-              // duration: 0.3,
               ease: "power2.out",
             });
             gsap.to(iconRef.current, {
               opacity: 0,
               x: -100,
               rotation: -360,
-              // duration: 0.4,
               ease: "power2.in",
             });
           }
         },
       });
-
-      
     }, headerRef);
 
     return () => ctx.revert();
@@ -89,24 +84,58 @@ const Header = () => {
 
       <nav>
         <ul className="flex flex-row gap-1.5">
-          <li className="nav-item">
-            <a href="#intro" className="nav-link">INTRO</a>
+          <li>
+            <NavLink
+              to="/"
+              end
+              className={({ isActive }) =>
+                `nav-item nav-link ${isActive ? "active" : ""}`
+              }
+            >
+              INTRO
+            </NavLink>
           </li>
-          <li className="nav-item">
-            <a href="#projects" className="nav-link">PROCESS</a>
+          <li>
+            <NavLink
+              to="/process"
+              className={({ isActive }) =>
+                `nav-item nav-link ${isActive ? "active" : ""}`
+              }
+            >
+              PROCESS
+            </NavLink>
           </li>
-          <li className="nav-item">
-            <a href="#values" className="nav-link">WORKS</a>
+          <li>
+            <NavLink
+              to="/works"
+              className={({ isActive }) =>
+                `nav-item nav-link ${isActive ? "active" : ""}`
+              }
+            >
+              WORKS
+            </NavLink>
           </li>
-          <li className="nav-item">
-            <a href="#background" className="nav-link">CONTACT</a>
+          <li>
+            <NavLink
+              to="/contact"
+              className={({ isActive }) =>
+                `nav-item nav-link ${isActive ? "active" : ""}`
+              }
+            >
+              CONTACT
+            </NavLink>
           </li>
         </ul>
       </nav>
 
-      <a href="/resume" className="nav-item nav-link">
+      <NavLink
+        to="/resume"
+        className={({ isActive }) =>
+          `nav-item nav-link ${isActive ? "active" : ""}`
+        }
+      >
         RESUME
-      </a>
+      </NavLink>
     </header>
   );
 };

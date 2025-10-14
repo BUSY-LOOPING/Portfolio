@@ -43,9 +43,8 @@ html {
   scroll-snap-type: y proximity;
 }
 
-
-
-@theme {}
+@theme {
+}
 
 @layer components {
   :root {
@@ -57,11 +56,23 @@ html {
     --accent-3: #fce0ae;
   }
 
+  @keyframes text-bounce {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    25% {
+      transform: translateY(-3px);
+    }
+    75% {
+      transform: translateY(-1px);
+    }
+  }
+
   @keyframes elastic-radius {
     0% {
       border-radius: 9999px;
       transform: scale(1);
-
     }
 
     90% {
@@ -74,6 +85,33 @@ html {
       background: black;
       color: #f0ece5;
     }
+  }
+
+  @keyframes hero-floating {
+    0%,
+    100% {
+      transform: translate(0, 0);
+    }
+
+    50% {
+      transform: translate(0, 5%);
+    }
+
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+
+  #hero-card-1 {
+    animation-delay: 0s;
+  }
+
+  #hero-card-2 {
+    animation-delay: 0.25s;
+  }
+
+  #hero-card-3  {
+    animation-delay: 0.5s;
   }
 
   /* main {
@@ -94,14 +132,16 @@ html {
     z-index: 100;
 
     .nav-item {
-      @apply py-[8px] px-[12px] bg-[#f0ece5] text-black transition-all duration-200 rounded-[3px];
+      @apply py-[13px] px-[12px] bg-[#f0ece5] text-black transition-all duration-200 rounded-[3px];
     }
 
-    .nav-item:hover {
+    .nav-item:hover,
+    .nav-item.active {
       animation: elastic-radius 0.2s ease-out forwards;
     }
 
-    .nav-link:hover {
+    .nav-link:hover,
+    .nav-item.active .nav-link {
       animation: text-bounce 0.4s ease-in-out;
     }
 
@@ -136,11 +176,15 @@ html {
     position: relative;
   }
 
-  .pin-container {
+  .hero-cards {
+    animation: hero-floating 2s infinite ease-in-out;
+  }
+
+  /* .pin-container {
     height: 100vh;
     width: 100%;
     position: relative;
-  }
+  } */
 
   section {
     padding-top: 7rem;
@@ -151,7 +195,6 @@ html {
   section:not(.cards) {
     position: relative;
     z-index: 2;
-
   }
 
   .skills-header {
@@ -202,7 +245,6 @@ html {
   }
 
   @keyframes floating {
-
     0%,
     100% {
       transform: translate(-50%, -50%);
@@ -246,7 +288,8 @@ html {
     overflow: hidden;
   }
 
-  .flip-card-front {}
+  .flip-card-front {
+  }
 
   #skill-card-1 .flip-card-front {
     background-color: var(--accent-l);
