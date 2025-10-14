@@ -199,12 +199,14 @@ html {
 
   .skills-header {
     position: relative;
+    z-index: 10;
     width: 100%;
-    transform: translateY(400%);
+    /* transform: translateY(400%); */
     will-change: transform;
   }
 
   .cards {
+    
     position: fixed;
     top: 0;
     left: 0;
@@ -213,7 +215,8 @@ html {
     display: flex;
     justify-content: center;
     z-index: 1;
-    background-color: var(--light);
+    background: transparent;
+    /* background-color: var(--light); */
   }
 
   .cards-container {

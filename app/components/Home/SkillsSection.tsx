@@ -1,6 +1,6 @@
 import Lenis from "lenis";
 import { useEffect, useRef } from "react";
-import { SkillCardBack, SkillCardFront, UpperFooter } from "~/components";
+import { SkillCardBack, SkillCardFront } from "~/components";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
 
@@ -24,31 +24,32 @@ const SkillsSection = () => {
 
       const smoothStep = (p: number) => p * p * (3 - 2 * p);
 
-      ScrollTrigger.create({
-        invalidateOnRefresh: true,
-        // markers:true,
+      const pinTrigger = ScrollTrigger.create({
         trigger: ".skills",
         start: `+=${window.innerHeight * 3}`,
-        // start: "top top",
         end: `+=${window.innerHeight * 4}`,
         pin: ".skills",
-        pinSpacing: true,
+        // pinSpacing: true,
+        onUpdate: (self) => {
+          // Force the pinned section to stay at top: 0
+          const pinnedSection = document.querySelector(".skills") as HTMLElement;
+          if (pinnedSection && self.isActive) {
+            gsap.set(pinnedSection, { top: 0 });
+          }
+        },
       });
 
       ScrollTrigger.create({
         invalidateOnRefresh: true,
-        
         trigger: ".skills",
         start: `+=${window.innerHeight * 3}`,
-        // start: "top top",
         end: `+=${window.innerHeight * 4}`,
         onLeave: () => {
           console.log("leave");
-          const skillsSection = document.querySelector(".skills");
+          const skillsSection = document.querySelector(".skills") as HTMLElement;
           if (!skillsSection) return;
           const skillsRect = skillsSection.getBoundingClientRect();
           const skillsTop = window.pageYOffset + skillsRect.top;
-          // const skillsTop = skillsSection.offsetTop - 50;
 
           gsap.set(".cards", {
             position: "absolute",
@@ -72,24 +73,17 @@ const SkillsSection = () => {
       ScrollTrigger.create({
         invalidateOnRefresh: true,
         trigger: ".skills",
-        // start: "top top",
         start: `+=${window.innerHeight * 2.5}`,
         end: `+=${window.innerHeight * 4}`,
         scrub: 1,
         onUpdate: (self) => {
-          console.log('Skills progress', self.progress);
           const progress = self.progress;
 
-          const headerProgress = gsap.utils.clamp(0, 1, progress / 0.5);
-          const headerY = gsap.utils.interpolate(
-            "400%",
-            "0%",
-            smoothStep(headerProgress)
-          );
-
-          console.log('headerY', headerY);
+          // Keep header visible and fixed at top
+          // No animation - just ensure it stays at y: 0
           gsap.set(".skills-header", {
-            y: headerY,
+            y: "0%",
+            opacity: 1,
           });
 
           const cards = ["#skill-card-1", "#skill-card-2", "#skill-card-3"];
@@ -213,10 +207,10 @@ const SkillsSection = () => {
                   skillsList={[
                     "React",
                     "TypeScript",
-                    "TypeScript",
                     "Tailwind",
                     "GSAP",
                     "Next.js",
+                    "Vite",
                   ]}
                   coverImg="./icons/kokeshi_cross_dark.svg"
                   coverText="Front End"
@@ -239,10 +233,10 @@ const SkillsSection = () => {
                   skillsList={[
                     "Node.js",
                     "Express",
-                    "Express",
                     "MySQL",
                     "PostgreSQL",
                     "Docker",
+                    "AWS",
                   ]}
                   coverImg="./icons/kokeshi_cross_dark.svg"
                   coverText="Back End"
@@ -266,9 +260,9 @@ const SkillsSection = () => {
                     "Python",
                     "TensorFlow",
                     "PyTorch",
-                    "PyTorch",
                     "AWS",
                     "MLOps",
+                    "Scikit-learn",
                   ]}
                   coverImg="./icons/kokeshi_cross_dark.svg"
                   coverText="AI/ML"
