@@ -211,19 +211,15 @@ const HeroSection = () => {
               About me
             </h2>
             <p className="landing-intro-para leading-none -tracking-[1px]">
-              Nice to meet you. I’m Dhruv, full-stack developer & machine
-              learning explorer based in Toronto building tools and apps that
-              just work — and scale.
+              I'm Dhruv, a full-stack developer and AI engineer based in Toronto. I build web applications with React and Node.js, then make them smarter with custom ML models and fine-tuned LLMs. From training neural networks to deploying scalable backends — I create tools that think and scale.
             </p>
           </article>
           <div className="flex justify-center items-center w-[20%]">
             <div className="relative">
-              {/* Main dot */}
               <div
                 ref={dotRef}
                 className="rounded-full bg-black h-1.5 aspect-square relative z-10"
               ></div>
-              {/* Trail dot */}
               <div className="trail-dot absolute top-0 left-0 rounded-full bg-black/40 h-1.5 aspect-square z-0"></div>
             </div>
           </div>

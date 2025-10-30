@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-black text-white py-12 px-[2.5rem]">
+    <footer className="w-full bg-black text-white py-12 px-[2.5rem] font-[SpeziaMono] uppercase">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           <div className="md:col-span-2">
@@ -18,7 +18,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-[0.9rem] font-[SpeziaMono] mb-4 uppercase">
+            <h4 className="text-[0.9rem] mb-4 uppercase">
               Services
             </h4>
             <ul className="space-y-2">
@@ -58,13 +58,13 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-[0.9rem] font-[SpeziaMono] mb-4 uppercase">
+            <h4 className="text-[0.9rem] mb-4 uppercase">
               Connect
             </h4>
             <ul className="space-y-2">
               <li>
                 <a
-                  href="https://github.com"
+                  href="https://github.com/BUSY-LOOPING"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[0.85rem] hover:text-[#fce0ae] transition-colors inline-flex items-center gap-1"
@@ -75,7 +75,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/dhruv-yadav-data-science/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[0.85rem] hover:text-[#fce0ae] transition-colors inline-flex items-center gap-1"
@@ -110,7 +110,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-[0.9rem] font-[SpeziaMono] mb-4 uppercase">
+            <h4 className="text-[0.9rem] mb-4 uppercase">
               Legal
             </h4>
             <ul className="space-y-2">
@@ -144,7 +144,7 @@ const Footer = () => {
 
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <div className="flex items-center gap-4">
-            <p className="text-[0.8rem] font-[SpeziaMono]">
+            <p className="text-[0.8rem]">
               ©2025 DHRUV YADAV
             </p>
             <a
@@ -156,7 +156,7 @@ const Footer = () => {
           </div>
 
           <div className="flex items-center gap-4">
-            <p className="text-[0.8rem] font-[SpeziaMono]">
+            <p className="text-[0.8rem]">
               TORONTO, ON
             </p>
             <div className="flex gap-2">
@@ -168,7 +168,7 @@ const Footer = () => {
 
           <a
             href="#top"
-            className="text-[0.8rem] font-[SpeziaMono] hover:text-[#fce0ae] transition-colors flex items-center gap-2"
+            className="text-[0.8rem] hover:text-[#fce0ae] transition-colors flex items-center gap-2"
           >
             <span>BACK TO TOP</span>
             <span className="text-[1rem]">↑ ↑ ↑</span>

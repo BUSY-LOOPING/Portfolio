@@ -8,21 +8,55 @@ const SkillsSection = () => {
   const containerRef = useRef(null);
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+    // gsap.registerPlugin(ScrollTrigger);
 
     let lenis: Lenis;
     const ctx = gsap.context(() => {
-      lenis = new Lenis();
+      // lenis = new Lenis();
 
-      function raf(time: number) {
-        lenis.raf(time * 1000);
-        ScrollTrigger.update();
-      }
+      // function raf(time: number) {
+      //   lenis.raf(time * 1000);
+      //   ScrollTrigger.update();
+      // }
 
-      gsap.ticker.add(raf);
-      gsap.ticker.lagSmoothing(0);
+      // gsap.ticker.add(raf);
+      // gsap.ticker.lagSmoothing(0);
 
       const smoothStep = (p: number) => p * p * (3 - 2 * p);
+
+      ScrollTrigger.create({
+        trigger: ".skills",
+        start: `+=${window.innerHeight * 2.5}`,
+        end: `+=${window.innerHeight * 6}`,
+        onEnter: () => {
+          gsap.to(".cards", {
+            opacity: 1,
+            pointerEvents: "auto",
+            duration: 0.3,
+          });
+        },
+        onLeave: () => {
+          gsap.to(".cards", {
+            opacity: 0,
+            pointerEvents: "none",
+            duration: 0.3,
+          });
+        },
+        onEnterBack: () => {
+          gsap.to(".cards", {
+            opacity: 1,
+            pointerEvents: "auto",
+            duration: 0.3,
+          });
+        },
+        onLeaveBack: () => {
+          gsap.to(".cards", {
+            opacity: 0,
+            pointerEvents: "none",
+            duration: 0.3,
+          });
+        },
+      });
 
       const pinTrigger = ScrollTrigger.create({
         trigger: ".skills",
@@ -32,7 +66,9 @@ const SkillsSection = () => {
         // pinSpacing: true,
         onUpdate: (self) => {
           // Force the pinned section to stay at top: 0
-          const pinnedSection = document.querySelector(".skills") as HTMLElement;
+          const pinnedSection = document.querySelector(
+            ".skills"
+          ) as HTMLElement;
           if (pinnedSection && self.isActive) {
             gsap.set(pinnedSection, { top: 0 });
           }
@@ -45,8 +81,9 @@ const SkillsSection = () => {
         start: `+=${window.innerHeight * 3}`,
         end: `+=${window.innerHeight * 4}`,
         onLeave: () => {
-          console.log("leave");
-          const skillsSection = document.querySelector(".skills") as HTMLElement;
+          const skillsSection = document.querySelector(
+            ".skills"
+          ) as HTMLElement;
           if (!skillsSection) return;
           const skillsRect = skillsSection.getBoundingClientRect();
           const skillsTop = window.pageYOffset + skillsRect.top;
@@ -78,9 +115,6 @@ const SkillsSection = () => {
         scrub: 1,
         onUpdate: (self) => {
           const progress = self.progress;
-
-          // Keep header visible and fixed at top
-          // No animation - just ensure it stays at y: 0
           gsap.set(".skills-header", {
             y: "0%",
             opacity: 1,
@@ -181,8 +215,11 @@ const SkillsSection = () => {
     }, containerRef);
 
     return () => {
+      // Kill all ScrollTriggers first
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+
+      // Revert the context last
       ctx.revert();
-      lenis?.destroy();
     };
   }, []);
 

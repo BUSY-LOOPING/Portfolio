@@ -43,8 +43,7 @@ html {
   scroll-snap-type: y proximity;
 }
 
-@theme {
-}
+@theme {}
 
 @layer components {
   :root {
@@ -57,13 +56,16 @@ html {
   }
 
   @keyframes text-bounce {
+
     0%,
     100% {
       transform: translateY(0);
     }
+
     25% {
       transform: translateY(-3px);
     }
+
     75% {
       transform: translateY(-1px);
     }
@@ -88,6 +90,7 @@ html {
   }
 
   @keyframes hero-floating {
+
     0%,
     100% {
       transform: translate(0, 0);
@@ -110,7 +113,7 @@ html {
     animation-delay: 0.25s;
   }
 
-  #hero-card-3  {
+  #hero-card-3 {
     animation-delay: 0.5s;
   }
 
@@ -161,7 +164,7 @@ html {
   }
 
   .landing-intro-para {
-    font-size: clamp(1.5rem, 1.5vw, 3.5rem);
+    font-size: clamp(22px, 1.4vw, 26px);
   }
 
   .trail-dot {
@@ -206,7 +209,7 @@ html {
   }
 
   .cards {
-    
+
     position: fixed;
     top: 0;
     left: 0;
@@ -216,6 +219,8 @@ html {
     justify-content: center;
     z-index: 1;
     background: transparent;
+    opacity: 0;
+    pointer-events: none;
     /* background-color: var(--light); */
   }
 
@@ -248,6 +253,7 @@ html {
   }
 
   @keyframes floating {
+
     0%,
     100% {
       transform: translate(-50%, -50%);
@@ -291,8 +297,7 @@ html {
     overflow: hidden;
   }
 
-  .flip-card-front {
-  }
+  .flip-card-front {}
 
   #skill-card-1 .flip-card-front {
     background-color: var(--accent-l);

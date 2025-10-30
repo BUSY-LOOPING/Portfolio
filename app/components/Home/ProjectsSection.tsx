@@ -1,4 +1,4 @@
-import React, { useMemo, useEffect, useRef, useState } from "react";
+import React, { useMemo, useEffect, useRef, useState, useLayoutEffect  } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -98,7 +98,7 @@ const ProjectsSection = () => {
   };
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+    // gsap.registerPlugin(ScrollTrigger);
 
     const container = containerRef.current;
     if (!container) return;
@@ -155,9 +155,8 @@ const ProjectsSection = () => {
     };
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect (() => {
     const section = sectionRef.current;
-    if (!section) alert("no section");
     if (!section) return;
 
     const ctx = gsap.context(() => {
@@ -167,8 +166,8 @@ const ProjectsSection = () => {
         end: `+=${(projects.length - 1) * window.innerHeight}`,
         pin: section,
         pinSpacing: true,
-        anticipatePin: 1,
-        markers: true,
+        // anticipatePin: 1,
+        markers: false,
         scrub: 1,
         snap: {
           snapTo: 1 / (projects.length - 1),
@@ -197,7 +196,7 @@ const ProjectsSection = () => {
     });
 
     return () => ctx.revert();
-  }, [currentProject, projects.length, isHovering]);
+  }, [currentProject, isHovering, projects.length]);
 
   return (
     <section
