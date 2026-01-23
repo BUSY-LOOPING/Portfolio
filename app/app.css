@@ -1,332 +1,383 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: "SpeziaMono";
-  src: url("/fonts/Spezia-Mono-Web-Medium.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+    font-family: "SpeziaMono";
+    src: url("/fonts/Spezia-Mono-Web-Medium.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
-  font-family: "SpeziaNarrow";
-  src: url("/fonts/Spezia-Narrow-Web-SemiBold.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+    font-family: "SpeziaNarrow";
+    src: url("/fonts/Spezia-Narrow-Web-SemiBold.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
-  font-family: "SpeziaMedium";
-  src: url("/fonts/Spezia-Web-Medium.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+    font-family: "SpeziaMedium";
+    src: url("/fonts/Spezia-Web-Medium.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
-  font-family: "RoobertMedium";
-  src: url("/fonts/Roobert-Medium.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+    font-family: "RoobertMedium";
+    src: url("/fonts/Roobert-Medium.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
 }
 
 body,
 html {
-  font-size: clamp(0.6rem, 2vw, 1.125rem);
-  margin: 0;
-  padding: 0;
-  font-family: "SpeziaMono", monospace;
-  scroll-behavior: smooth;
-  background: #f9f4eb;
-  scroll-snap-type: y proximity;
+    font-size: clamp(0.6rem, 2vw, 1.125rem);
+    margin: 0;
+    padding: 0;
+    font-family: "SpeziaMono", monospace;
+    scroll-behavior: smooth;
+    background: #f9f4eb;
+    scroll-snap-type: y proximity;
 }
 
 @theme {}
 
 @layer components {
-  :root {
-    --dark: #000;
-    --light: #f9f4eb;
-    --light2: #f0ece5;
-    --accent-l: #e6d9f5;
-    --accent-2: #ffd1f1;
-    --accent-3: #fce0ae;
-  }
-
-  @keyframes text-bounce {
-
-    0%,
-    100% {
-      transform: translateY(0);
+    :root {
+        --dark: #000;
+        --light: #f9f4eb;
+        --light2: #f0ece5;
+        --accent-l: #e6d9f5;
+        --accent-2: #ffd1f1;
+        --accent-3: #fce0ae;
     }
 
-    25% {
-      transform: translateY(-3px);
+    @keyframes text-bounce {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        25% {
+            transform: translateY(-3px);
+        }
+
+        75% {
+            transform: translateY(-1px);
+        }
     }
 
-    75% {
-      transform: translateY(-1px);
-    }
-  }
+    @keyframes elastic-radius {
+        0% {
+            border-radius: 9999px;
+            transform: scale(1);
+        }
 
-  @keyframes elastic-radius {
-    0% {
-      border-radius: 9999px;
-      transform: scale(1);
-    }
+        90% {
+            transform: scale(1.05);
+        }
 
-    90% {
-      transform: scale(1.05);
-    }
-
-    100% {
-      border-radius: 9999px;
-      transform: scale(1);
-      background: black;
-      color: #f0ece5;
-    }
-  }
-
-  @keyframes hero-floating {
-
-    0%,
-    100% {
-      transform: translate(0, 0);
+        100% {
+            border-radius: 9999px;
+            transform: scale(1);
+            background: black;
+            color: #f0ece5;
+        }
     }
 
-    50% {
-      transform: translate(0, 5%);
+    @keyframes hero-floating {
+
+        0%,
+        100% {
+            transform: translate(0, 0);
+        }
+
+        50% {
+            transform: translate(0, 5%);
+        }
+
+        100% {
+            transform: translate(0, 0);
+        }
     }
 
-    100% {
-      transform: translate(0, 0);
+    #hero-card-1 {
+        animation-delay: 0s;
     }
-  }
 
-  #hero-card-1 {
-    animation-delay: 0s;
-  }
+    #hero-card-2 {
+        animation-delay: 0.25s;
+    }
 
-  #hero-card-2 {
-    animation-delay: 0.25s;
-  }
+    #hero-card-3 {
+        animation-delay: 0.5s;
+    }
 
-  #hero-card-3 {
-    animation-delay: 0.5s;
-  }
-
-  /* main {
+    /* main {
     position: relative;
     z-index: 1;
   } */
 
-  footer {
-    position: relative;
-    z-index: 2;
-  }
-
-  header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-
-    .nav-item {
-      @apply py-[13px] px-[12px] bg-[#f0ece5] text-black transition-all duration-200 rounded-[3px];
+    footer {
+        position: relative;
+        z-index: 2;
     }
 
-    .nav-item:hover,
-    .nav-item.active {
-      animation: elastic-radius 0.2s ease-out forwards;
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+
+        .nav-item {
+            @apply py-[13px] px-[12px] bg-[#f0ece5] text-black transition-all duration-200 rounded-[3px];
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            animation: elastic-radius 0.2s ease-out forwards;
+        }
+
+        .nav-link:hover,
+        .nav-item.active .nav-link {
+            animation: text-bounce 0.4s ease-in-out;
+        }
+
+        .logo-link:hover div {
+            transform: translateY(-2px);
+            transition: transform 0.2s ease;
+        }
+
+        .icon-link:hover div {
+            transform: scale(1.1);
+            transition: transform 0.2s ease;
+        }
     }
 
-    .nav-link:hover,
-    .nav-item.active .nav-link {
-      animation: text-bounce 0.4s ease-in-out;
+    .skills-heading {
+        font-size: clamp(1.1875rem, 0.9vw, 3.5rem);
     }
 
-    .logo-link:hover div {
-      transform: translateY(-2px);
-      transition: transform 0.2s ease;
+    .landing-intro-para {
+        font-size: clamp(22px, 1.4vw, 26px);
     }
 
-    .icon-link:hover div {
-      transform: scale(1.1);
-      transition: transform 0.2s ease;
+    .trail-dot {
+        filter: blur(1px);
+        transform: translateY(0);
+        transition: opacity 0.2s ease-out;
     }
-  }
 
-  .skills-heading {
-    font-size: clamp(1.1875rem, 0.9vw, 3.5rem);
-  }
+    .cards-container {
+        display: grid;
+        place-items: center;
+        position: relative;
+    }
 
-  .landing-intro-para {
-    font-size: clamp(22px, 1.4vw, 26px);
-  }
+    .hero-cards {
+        animation: hero-floating 2s infinite ease-in-out;
+    }
 
-  .trail-dot {
-    filter: blur(1px);
-    transform: translateY(0);
-    transition: opacity 0.2s ease-out;
-  }
-
-  .cards-container {
-    display: grid;
-    place-items: center;
-    position: relative;
-  }
-
-  .hero-cards {
-    animation: hero-floating 2s infinite ease-in-out;
-  }
-
-  /* .pin-container {
+    /* .pin-container {
     height: 100vh;
     width: 100%;
     position: relative;
   } */
 
-  section {
-    padding-top: 7rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  section:not(.cards) {
-    position: relative;
-    z-index: 2;
-  }
-
-  .skills-header {
-    position: relative;
-    z-index: 10;
-    width: 100%;
-    /* transform: translateY(400%); */
-    will-change: transform;
-  }
-
-  .cards {
-
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100svh;
-    display: flex;
-    justify-content: center;
-    z-index: 1;
-    background: transparent;
-    opacity: 0;
-    pointer-events: none;
-    /* background-color: var(--light); */
-  }
-
-  .cards-container {
-    position: relative;
-    width: 75vw;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 4rem;
-  }
-
-  .cards-container .card {
-    flex: 1;
-    position: relative;
-    aspect-ratio: 5/7;
-    perspective: 1000px;
-    container-type: inline-size;
-  }
-
-  .cards-container .card .card-wrapper {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    animation: floating 2s infinite ease-in-out;
-  }
-
-  @keyframes floating {
-
-    0%,
-    100% {
-      transform: translate(-50%, -50%);
+    section {
+        padding-top: 7rem;
+        position: relative;
+        overflow: hidden;
     }
 
-    50% {
-      transform: translate(-50%, -52%);
+    section:not(.cards) {
+        position: relative;
+        z-index: 2;
     }
 
-    100% {
-      transform: translate(-50%, -50%);
+    .skills-header {
+        position: relative;
+        z-index: 10;
+        width: 100%;
+        /* transform: translateY(400%); */
+        will-change: transform;
     }
-  }
 
-  #skill-card-1 .card-wrapper {
-    animation-delay: 0s;
-  }
+    .cards {
 
-  #skill-card-2 .card-wrapper {
-    animation-delay: 0.25s;
-  }
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100svh;
+        display: flex;
+        justify-content: center;
+        z-index: 1;
+        background: transparent;
+        opacity: 0;
+        pointer-events: none;
+        /* background-color: var(--light); */
+    }
 
-  #skill-card-3 .card-wrapper {
-    animation-delay: 0.5s;
-  }
+    .cards-container {
+        position: relative;
+        width: 75vw;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 4rem;
+    }
 
-  .flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-  }
+    .cards-container .card {
+        flex: 1;
+        position: relative;
+        aspect-ratio: 5/7;
+        perspective: 1000px;
+        container-type: inline-size;
+    }
 
-  .flip-card-front,
-  .flip-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 1rem;
-    backface-visibility: hidden;
-    overflow: hidden;
-  }
+    .cards-container .card .card-wrapper {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+        animation: floating 2s infinite ease-in-out;
+    }
 
-  .flip-card-front {}
+    @keyframes floating {
 
-  #skill-card-1 .flip-card-front {
-    background-color: var(--accent-l);
-  }
+        0%,
+        100% {
+            transform: translate(-50%, -50%);
+        }
 
-  #skill-card-1 .flip-card-front {
-    background-color: var(--accent-2);
-  }
+        50% {
+            transform: translate(-50%, -52%);
+        }
 
-  #skill-card-1 .flip-card-front {
-    background-color: var(--accent-3);
-  }
+        100% {
+            transform: translate(-50%, -50%);
+        }
+    }
 
-  .flip-card-back {
-    transform: rotateY(180deg);
-  }
+    #skill-card-1 .card-wrapper {
+        animation-delay: 0s;
+    }
 
-  #skill-card-1 {
-    transform: translateX(100%) translateY(-100%) rotate(-5deg) scale(0.25);
-    z-index: 5;
-  }
+    #skill-card-2 .card-wrapper {
+        animation-delay: 0.25s;
+    }
 
-  #skill-card-2 {
-    transform: translateX(0%) translateY(-100%) rotate(0deg) scale(0.25);
-    z-index: 4;
-  }
+    #skill-card-3 .card-wrapper {
+        animation-delay: 0.5s;
+    }
 
-  #skill-card-3 {
-    transform: translateX(-100%) translateY(-100%) rotate(5deg) scale(0.25);
-    z-index: 3;
-  }
+    .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+    }
+
+    .flip-card-front,
+    .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 1rem;
+        backface-visibility: hidden;
+        overflow: hidden;
+    }
+
+    .flip-card-front {}
+
+    #skill-card-1 .flip-card-front {
+        background-color: var(--accent-l);
+    }
+
+    #skill-card-1 .flip-card-front {
+        background-color: var(--accent-2);
+    }
+
+    #skill-card-1 .flip-card-front {
+        background-color: var(--accent-3);
+    }
+
+    .flip-card-back {
+        transform: rotateY(180deg);
+    }
+
+    #skill-card-1 {
+        transform: translateX(100%) translateY(-100%) rotate(-5deg) scale(0.25);
+        z-index: 5;
+    }
+
+    #skill-card-2 {
+        transform: translateX(0%) translateY(-100%) rotate(0deg) scale(0.25);
+        z-index: 4;
+    }
+
+    #skill-card-3 {
+        transform: translateX(-100%) translateY(-100%) rotate(5deg) scale(0.25);
+        z-index: 3;
+    }
+
+
+
+    .price-card-container::after {
+        content: '';
+        position: absolute;
+        bottom: -50px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 140%;
+        height: 40px;
+        background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.4) 0%, transparent 70%);
+        filter: blur(15px);
+        z-index: -1;
+    }
+
+    .card-face {
+        backface-visibility: hidden;
+    }
+
+    .card-back {
+        transform: rotateY(180deg);
+    }
+
+    .stack-item {
+        opacity: 0.2;
+        transition: opacity 0.4s ease;
+    }
+
+    .stack-item.active {
+        opacity: 1;
+        color: #fff;
+    }
+
+    .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+    }
+
+    .faq-item.open .faq-answer {
+        max-height: 200px;
+    }
+
+    .faq-item.open .plus {
+        transform: rotate(45deg);
+    }
+
+    .arc-card {
+        transform-origin: 50% 400%;
+    }
 }

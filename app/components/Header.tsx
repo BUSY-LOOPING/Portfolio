@@ -107,12 +107,12 @@ const Header = () => {
           </li>
           <li>
             <NavLink
-              to="/works"
+              to="/rates"
               className={({ isActive }) =>
                 `nav-item nav-link ${isActive ? "active" : ""}`
               }
             >
-              WORKS
+              RATES
             </NavLink>
           </li>
           <li>
