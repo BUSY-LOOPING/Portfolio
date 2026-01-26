@@ -1,6 +1,7 @@
 import { SkillCardBack, SkillCardFront } from "~/components";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState} from "react";
 import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 const HeroSection = () => {
   const dotRef = useRef(null);
@@ -8,8 +9,31 @@ const HeroSection = () => {
   const backEndRef = useRef(null);
   const aiMlRef = useRef(null);
   const cards = useRef(null);
+  const [isMediumOrLarger, setIsMediumOrLarger] = useState(
+    typeof window !== "undefined" &&
+      window.matchMedia("(min-width: 425px)").matches,
+  );
 
   useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 425px)");
+
+    const handleResize = (e: MediaQueryListEvent) => {
+      setIsMediumOrLarger(e.matches);
+    };
+
+    mediaQuery.addEventListener("change", handleResize);
+
+    return () => {
+      mediaQuery.removeEventListener("change", handleResize);
+    };
+  }, []);
+
+  useGSAP(() => {
+    // Check if screen is medium size or larger
+    const isMediumOrLarger = window.matchMedia("(min-width: 425px)").matches;
+
+    if (!isMediumOrLarger) return; // Exit early on small screens
+
     const tl = gsap.timeline({ repeat: -1 });
 
     // Dot bounce up
@@ -21,7 +45,7 @@ const HeroSection = () => {
         gsap.fromTo(
           ".trail-dot",
           { y: 0, opacity: 0 },
-          { y: -30, opacity: 0.8, duration: 0.6, ease: "power1.out" }
+          { y: -30, opacity: 0.8, duration: 0.6, ease: "power1.out" },
         );
       },
     });
@@ -35,28 +59,12 @@ const HeroSection = () => {
         gsap.fromTo(
           ".trail-dot",
           { y: -30, opacity: 0.8 },
-          { y: 0, opacity: 0, duration: 0.6, ease: "power1.out" }
+          { y: 0, opacity: 0, duration: 0.6, ease: "power1.out" },
         );
       },
     });
 
     tl.to({}, { duration: 0.6 }); // Empty tween as a delay
-
-    const float = (element: any, delay = 0) => {
-      let tween = gsap.to(element, {
-        y: -15,
-        duration: 1.5,
-        ease: "sine.inOut",
-        repeat: -1,
-        yoyo: true,
-        delay,
-      });
-      return tween;
-    };
-
-    // let t1 = float(frontEndRef.current, 0);
-    // let t2 = float(backEndRef.current, 0.3);
-    // let t3 = float(aiMlRef.current, 0.6);
 
     const cards = [frontEndRef, backEndRef, aiMlRef];
     cards.forEach((card, index) => {
@@ -74,21 +82,6 @@ const HeroSection = () => {
           scrub: true,
           start: "bottom 60%",
           end: "bottom top",
-          onEnter: () => {
-            // t1.pause();
-            // t2.pause();
-            // t3.pause();
-          },
-          onLeave: () => {
-            // t1.resume();
-            // t2.resume();
-            // t3.resume();
-          },
-          onLeaveBack: () => {
-            // t1.resume();
-            // t2.resume();
-            // t3.resume();
-          },
         },
       });
 
@@ -97,17 +90,17 @@ const HeroSection = () => {
         ease: "power1.inOut",
         scrollTrigger: {
           trigger: card.current,
-          start: "top 15%", // fade starts when scroll reaches 10% from top
-          end: "bottom top", // tweak this range as needed
+          start: "top 15%",
+          end: "bottom top",
           scrub: true,
         },
       });
     });
-  }, []);
+  }, [isMediumOrLarger]);
 
   return (
-    <section className="h-[100vh] lg:px-[4rem] md:px-[3rem] px-[2rem] pt-[3rem]">
-      <div className="h-[90vh] mt-[3rem] flex flex-col">
+    <section className="min-h-[100vh] lg:px-[4rem] md:px-[3rem] px-[2rem] pt-[3rem] flex flex-col">
+      <div className="mt-[3rem] flex flex-col">
         <div className="w-full flex space-between items-center mb-6">
           <div className="flex flex-row gap-[1.5rem]">
             <img
@@ -161,14 +154,12 @@ const HeroSection = () => {
             />
           </div>
         </div>
-        <div className="w-full justify-center items-center flex flex-col">
+        <div className="w-full justify-center md:items-center flex flex-col">
           <div className="flex flex-col items-start">
             <p className="">Hello I'm</p>
-            <h1
-              style={{ fontSize: "max(10rem, 13vw)" }}
-              className="font-[SpeziaNarrow] text-[17rem] leading-none -tracking-[18px] -ml-[20px] -mt-[25px]"
-            >
-              DHRUV YADAV
+            <h1 className="font-[SpeziaNarrow] text-[clamp(4rem,15vw,10rem)] -ml-[5px] tracking-[clamp(-9.48666px,2vw,-3.84px)] leading-[clamp(52px,11vw,130px)] flex flex-col md:flex-row gap-0 md:gap-3">
+              <span>DHRUV</span>
+              <span>YADAV</span>
             </h1>
           </div>
         </div>
@@ -188,7 +179,7 @@ const HeroSection = () => {
           </div>
           <div ref={backEndRef}>
             <SkillCardFront
-            id="hero-card-2"
+              id="hero-card-2"
               className="max-w-[11rem] hero-cards"
               color="#ffd2f3"
               coverImg="./icons/kokeshi_cross_dark.svg"
@@ -197,7 +188,7 @@ const HeroSection = () => {
           </div>
           <div ref={aiMlRef}>
             <SkillCardFront
-            id="hero-card-3"
+              id="hero-card-3"
               className="max-w-[11rem] hero-cards"
               color="#fcdeac"
               coverImg="./icons/kokeshi_cross_dark.svg"
@@ -205,27 +196,34 @@ const HeroSection = () => {
             />
           </div>
         </div>
-        <div className="mb-[2rem] flex flex-row w-full items-end">
-          <article className="w-[40%] font-[SpeziaMedium]">
-            <h2 className="inline-block text-[0.7rem] md:text-[0.8rem] lg:text-[0.9rem] xl:text-[1rem] py-1 px-1.5 uppercase bg-black text-[#f0ece5] rounded-[3px]">
-              About me
-            </h2>
-            <p className="landing-intro-para leading-none -tracking-[1px]">
-              I'm Dhruv, a full-stack developer and AI engineer based in Toronto. I build web applications with React and Node.js, then make them smarter with custom ML models and fine-tuned LLMs. From training neural networks to deploying scalable backends — I create tools that think and scale.
-            </p>
-          </article>
-          <div className="flex justify-center items-center w-[20%]">
-            <div className="relative">
-              <div
-                ref={dotRef}
-                className="rounded-full bg-black h-1.5 aspect-square relative z-10"
-              ></div>
-              <div className="trail-dot absolute top-0 left-0 rounded-full bg-black/40 h-1.5 aspect-square z-0"></div>
-            </div>
+      </div>
+      <div className="mt-auto mb-[2rem] flex flex-col md:flex-row w-full md:items-end gap-4">
+        <article className="mb-[3rem] md:mb-0 w-full md:w-[40%] font-[SpeziaMedium]">
+          <h2 className="inline-block py-1 px-1.5 uppercase bg-black text-[#f0ece5] rounded-[3px] text-[clamp(12px,1.2vw,1rem)]">
+            ABOUT ME
+          </h2>
+          <p className="mt-3 landing-intro-para leading-none -tracking-[1px]">
+            I'm Dhruv, a full-stack developer and AI engineer based in Toronto.
+            <span className="text-[#75736f]">
+              From training neural networks to deploying scalable backends — I
+              create tools that think and scale.
+            </span>
+          </p>
+        </article>
+        <div className="flex justify-between md:justify-center items-center w-full md:w-[20%]">
+          <div className="relative">
+            <div
+              ref={dotRef}
+              className="rounded-full bg-black h-1.5 aspect-square relative z-10"
+            ></div>
+            <div className="trail-dot absolute top-0 left-0 rounded-full bg-black/40 h-1.5 aspect-square z-0"></div>
           </div>
-          <div className="w-[40%] text-[0.7rem] md:text-[0.8rem] lg:text-[0.9rem] xl:text-[1rem] leading-none -tracking-[1px] flex justify-end">
+          <div className="md:hidden w-auto text-[12px] leading-none -tracking-[1px]">
             <p>UI/UX & WEB DEVELOPER</p>
           </div>
+        </div>
+        <div className="hidden md:flex w-[40%] text-[12px] leading-none -tracking-[1px] justify-end">
+          <p>UI/UX & WEB DEVELOPER</p>
         </div>
       </div>
     </section>

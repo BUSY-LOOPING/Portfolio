@@ -32,6 +32,12 @@
     font-display: swap;
 }
 
+.font-spezia-medium {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 500 !important;
+}
+
 body,
 html {
     font-size: clamp(0.6rem, 2vw, 1.125rem);
@@ -41,6 +47,9 @@ html {
     scroll-behavior: smooth;
     background: #f9f4eb;
     scroll-snap-type: y proximity;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
 }
 
 @theme {}
