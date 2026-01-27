@@ -1,5 +1,5 @@
 import { SkillCardBack, SkillCardFront } from "~/components";
-import React, { useEffect, useRef, useState} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
@@ -163,6 +163,7 @@ const HeroSection = () => {
             </h1>
           </div>
         </div>
+        <span className="h-10"></span>
         <div
           id="hero-cards-wrapper"
           ref={cards}

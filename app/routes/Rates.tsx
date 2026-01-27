@@ -172,17 +172,17 @@ const Rates = () => {
 
       <section className="min-h-screen flex flex-col justify-center items-center px-5 md:px-10 perspective-[1000px]">
         <div className="flex flex-col items-center leading-[0.85] z-[1] pointer-events-none">
-          <h1 className="headline text-[16vw] md:text-[14vw] leading-[0.8] -tracking-[clamp(3.9px,0.9vw,12px)] font-[SpeziaNarrow] uppercase text-[#e0e0e0] text-center m-0">
+          <h1 className="headline text-[16vw] md:text-[14vw] leading-[0.8] -tracking-[clamp(3.9px,0.9vw,12px)] font-[SpeziaNarrow] uppercase text-[#f9f4eb] text-center m-0">
             SIMPLE
           </h1>
-          <h1 className="headline text-[16vw] md:text-[14vw] leading-[0.8] -tracking-[clamp(3.9px,0.9vw,12px)] font-[SpeziaNarrow] uppercase text-[#e0e0e0] text-center m-0">
+          <h1 className="headline text-[16vw] md:text-[14vw] leading-[0.8] -tracking-[clamp(3.9px,0.9vw,12px)] font-[SpeziaNarrow] uppercase text-[#f9f4eb] text-center m-0">
             FIXED PRICE
           </h1>
         </div>
 
         <div className="price-card-container absolute top-1/2 left-1/2 w-[150px] md:w-[200px] h-[210px] md:h-[280px] z-10 -translate-x-1/2 -translate-y-1/2">
           <div ref={priceCardRef} className="price-card w-full h-full relative" style={{ transformStyle: 'preserve-3d' }}>
-            <div className="card-face card-front absolute w-full h-full bg-[#e8e6e1] text-[#0a0a0a] rounded-xl flex flex-col justify-center items-center shadow-[0_20px_50px_rgba(0,0,0,0.8)] z-[2]">
+            <div className="card-face card-front absolute w-full h-full bg-[#f9f4eb] text-[#0a0a0a] rounded-xl flex flex-col justify-center items-center shadow-[0_20px_50px_rgba(0,0,0,0.8)] z-[2]">
               <div className="absolute top-[15px]">+</div>
               <div className="absolute bottom-[15px] left-[15px]">♦</div>
               <div className="absolute bottom-[15px] right-[15px]">♦</div>

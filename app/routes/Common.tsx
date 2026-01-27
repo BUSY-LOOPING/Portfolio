@@ -5,7 +5,7 @@ const Common = () => {
   return (
     <div>
       <Header />
-      <main className="flex-grow">
+      <main className="mt-5 flex-grow">
         <Outlet />
       </main>
 
