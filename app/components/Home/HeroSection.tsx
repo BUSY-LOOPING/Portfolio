@@ -15,7 +15,7 @@ const HeroSection = () => {
   );
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(min-width: 425px)");
+    const mediaQuery = window.matchMedia("(min-width: 768px)");
 
     const handleResize = (e: MediaQueryListEvent) => {
       setIsMediumOrLarger(e.matches);

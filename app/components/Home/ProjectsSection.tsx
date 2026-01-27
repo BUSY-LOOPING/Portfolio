@@ -1,4 +1,10 @@
-import React, { useMemo, useEffect, useRef, useState, useLayoutEffect  } from "react";
+import React, {
+  useMemo,
+  useEffect,
+  useRef,
+  useState,
+  useLayoutEffect,
+} from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -18,39 +24,38 @@ const ProjectsSection = () => {
 
   const projects = [
     {
-      title: "E-Commerce Platform",
+      title: "OpenWav",
       description:
-        "A modern online shopping experience with seamless checkout and inventory management.",
-      subtext: "Built with React and Node.js",
+        "Production-grade audio sharing platform using microservices architecture with React.js frontend and Node.js/Express backend services.",
+      subtext: "Full Stack Social Audio Platform",
       image:
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=600&h=400&fit=crop",
     },
     {
-      title: "Social Media Dashboard",
+      title: "Self-Hosted Cloud Infrastructure",
       description:
-        "Analytics platform for tracking engagement across multiple social channels.",
-      subtext: "Real-time data visualization",
+        "Private cloud solution running multiple production web applications and self-hosted LLM models using Docker containers, NGINX reverse proxy, and automated deployment pipelines.",
+      subtext: "Achieving 99.8% Uptime",
+      image:
+        "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop",
+    },
+    {
+      title: "Instagram Clone",
+      description:
+        "Scalable social media application using Flutter/Dart frontend with Java and Swift backend services, implementing microservices architecture for authentication, media upload, and real-time chat.",
+      subtext: "Cross-Platform Mobile Application",
+      image:
+        "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&h=400&fit=crop",
+    },
+    {
+      title: "DeepLearning Optimizers",
+      description:
+        "Visualization of popular Deep Learning optimizers built upon Gradient Descent, providing interactive demonstrations of optimization algorithms and their convergence patterns.",
+      subtext: "Machine Learning Visualization",
       image:
         "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
     },
-    {
-      title: "Mobile Banking App",
-      description:
-        "Secure financial management with intuitive interface and biometric authentication.",
-      subtext: "iOS and Android native",
-      image:
-        "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&h=400&fit=crop",
-    },
-    {
-      title: "Project Management Tool",
-      description:
-        "Collaborative workspace for teams to plan, track and deliver projects efficiently.",
-      subtext: "Agile workflow support",
-      image:
-        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=400&fit=crop",
-    },
   ];
-
   const topThickIndices = useMemo(() => {
     const indices = new Set<number>();
     while (indices.size < 10) {
@@ -98,8 +103,6 @@ const ProjectsSection = () => {
   };
 
   useEffect(() => {
-    // gsap.registerPlugin(ScrollTrigger);
-
     const container = containerRef.current;
     if (!container) return;
 
@@ -155,7 +158,7 @@ const ProjectsSection = () => {
     };
   }, []);
 
-  useLayoutEffect (() => {
+  useLayoutEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
 
@@ -187,7 +190,7 @@ const ProjectsSection = () => {
               gsap.fromTo(
                 imageRef.current,
                 { opacity: 0, scale: 0.9 },
-                { opacity: 1, scale: 1, duration: 0.4, ease: "power2.out" }
+                { opacity: 1, scale: 1, duration: 0.4, ease: "power2.out" },
               );
             }
           }
@@ -196,7 +199,7 @@ const ProjectsSection = () => {
     });
 
     return () => ctx.revert();
-  }, [currentProject, isHovering, projects.length]);
+  }, [currentProject, projects.length]);
 
   return (
     <section
@@ -205,11 +208,11 @@ const ProjectsSection = () => {
     >
       <div className="flex-1 my-[10%] flex flex-col justify-between items-start">
         <h3 className="text-[14px]">FEATURED PROJECTS</h3>
-        <div>
-          <p className="font-[SpeziaMedium] leading-7.5 -tracking-[1px] text-[2rem] mr-[10rem]">
+        <div className="text-[clamp(1.375rem,2vw,1.875rem)]">
+          <p className="font-[SpeziaMedium] leading-7.5 -tracking-[1px] mr-[10rem]">
             <span>{projects[currentProject].title}</span>
           </p>
-          <p className="font-[SpeziaMedium] leading-7.5 -tracking-[1px] text-[2rem] mr-[10rem] mt-4">
+          <p className="font-[SpeziaMedium] leading-7.5 -tracking-[1px] mr-[10rem] mt-4">
             <span>{projects[currentProject].description}</span>
             <br />
             <span className="text-[#8e8b86]">
@@ -222,7 +225,7 @@ const ProjectsSection = () => {
         className="flex-1 relative flex items-center justify-center"
         ref={containerRef}
       >
-        <div className="absolute top-[20%] left-0 w-full flex justify-between">
+        <div className="absolute top-[10%] left-0 w-full flex justify-between">
           {Array.from({ length: barCount }).map((_, i) => (
             <div
               key={`top-${i}`}
@@ -237,9 +240,9 @@ const ProjectsSection = () => {
           ref={imageRef}
           src={projects[currentProject].image}
           alt={projects[currentProject].title}
-          className="max-w-[80%] max-h-[60%] object-cover rounded-lg"
+          className="max-w-[65%] max-h-[50%] object-contain rounded-lg pointer-events-none"
         />
-        <div className="absolute bottom-[20%] left-0 w-full flex justify-between">
+        <div className="absolute bottom-[10%] left-0 w-full flex justify-between">
           {Array.from({ length: barCount }).map((_, i) => (
             <div
               key={`bottom-${i}`}

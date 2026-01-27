@@ -67,7 +67,7 @@ const SkillsSection = () => {
         onUpdate: (self) => {
           // Force the pinned section to stay at top: 0
           const pinnedSection = document.querySelector(
-            ".skills"
+            ".skills",
           ) as HTMLElement;
           if (pinnedSection && self.isActive) {
             gsap.set(pinnedSection, { top: 0 });
@@ -82,7 +82,7 @@ const SkillsSection = () => {
         end: `+=${window.innerHeight * 4}`,
         onLeave: () => {
           const skillsSection = document.querySelector(
-            ".skills"
+            ".skills",
           ) as HTMLElement;
           if (!skillsSection) return;
           const skillsRect = skillsSection.getBoundingClientRect();
@@ -126,10 +126,10 @@ const SkillsSection = () => {
             const cardProgress = gsap.utils.clamp(
               0,
               1,
-              (progress - delay * 0.1) / (0.9 - delay * 0.1)
+              (progress - delay * 0.1) / (0.9 - delay * 0.1),
             );
             const innerCard = document.querySelector(
-              `${cardId} .flip-card-inner`
+              `${cardId} .flip-card-inner`,
             );
 
             let y;
@@ -138,14 +138,14 @@ const SkillsSection = () => {
               y = gsap.utils.interpolate(
                 "-100%",
                 "50%",
-                smoothStep(normalizedProgress)
+                smoothStep(normalizedProgress),
               );
             } else if (cardProgress < 0.6) {
               const normalizedProgress = (cardProgress - 0.4) / 0.2;
               y = gsap.utils.interpolate(
                 "50%",
                 "0%",
-                smoothStep(normalizedProgress)
+                smoothStep(normalizedProgress),
               );
             } else {
               y = "0%";
@@ -157,14 +157,14 @@ const SkillsSection = () => {
               scale = gsap.utils.interpolate(
                 0.25,
                 0.75,
-                smoothStep(normalizedProgress)
+                smoothStep(normalizedProgress),
               );
             } else if (cardProgress < 0.6) {
               const normalizedProgress = (cardProgress - 0.4) / 0.2;
               scale = gsap.utils.interpolate(
                 0.75,
                 1,
-                smoothStep(normalizedProgress)
+                smoothStep(normalizedProgress),
               );
             } else {
               scale = 1;
@@ -180,12 +180,12 @@ const SkillsSection = () => {
               x = gsap.utils.interpolate(
                 index === 0 ? "100%" : index === 1 ? "0%" : "-100%",
                 "0%",
-                smoothStep(normalizedProgress)
+                smoothStep(normalizedProgress),
               );
               rotate = gsap.utils.interpolate(
                 index === 0 ? -5 : index === 1 ? 0 : 5,
                 0,
-                smoothStep(normalizedProgress)
+                smoothStep(normalizedProgress),
               );
 
               rotationY = smoothStep(normalizedProgress) * 180;
@@ -242,12 +242,12 @@ const SkillsSection = () => {
               <div className="flip-card-inner">
                 <SkillCardBack
                   skillsList={[
-                    "React",
-                    "TypeScript",
-                    "Tailwind",
-                    "GSAP",
                     "Next.js",
-                    "Vite",
+                    "GSAP",
+                    "Flutter",
+                    "Tailwind CSS",
+                    "GraphQL",
+                    "Microservices",
                   ]}
                   coverImg="./icons/kokeshi_cross_dark.svg"
                   coverText="Front End"
@@ -268,12 +268,12 @@ const SkillsSection = () => {
               <div className="flip-card-inner">
                 <SkillCardBack
                   skillsList={[
-                    "Node.js",
-                    "Express",
-                    "MySQL",
-                    "PostgreSQL",
-                    "Docker",
-                    "AWS",
+                    "FastAPI",
+                    "Redis",
+                    "MongoDB",
+                    "GraphQL",
+                    "CI/CD",
+                    "NGINX",
                   ]}
                   coverImg="./icons/kokeshi_cross_dark.svg"
                   coverText="Back End"
@@ -294,12 +294,12 @@ const SkillsSection = () => {
               <div className="flip-card-inner">
                 <SkillCardBack
                   skillsList={[
-                    "Python",
                     "TensorFlow",
+                    "Python",
+                    "NumPy",
                     "PyTorch",
-                    "AWS",
-                    "MLOps",
-                    "Scikit-learn",
+                    "LLM Deploy",
+                    "Anomaly Det.",
                   ]}
                   coverImg="./icons/kokeshi_cross_dark.svg"
                   coverText="AI/ML"

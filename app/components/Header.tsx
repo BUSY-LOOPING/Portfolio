@@ -151,7 +151,7 @@ const Header = () => {
                       }`
                     }
                   >
-                    SERVICE
+                    INTRO
                   </NavLink>
                 </li>
                 <li className="w-full text-center">

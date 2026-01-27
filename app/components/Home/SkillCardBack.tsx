@@ -20,7 +20,7 @@ const SkillCardBack = ({
       } bg-white`}
     >
       <div className="w-full flex flex-row justify-between items-center">
-        <h4 className="uppercase p-0 text-[clamp(0.45rem,0.7vw,0.9rem)] leading-tight">
+        <h4 className="uppercase p-0 font-[SpeziaMono] text-[clamp(0.45rem,0.7vw,0.9rem)] leading-tight">
           {coverText}
         </h4>
         <img
@@ -34,7 +34,7 @@ const SkillCardBack = ({
         {skillsList.map((skill, index) => (
           <div
             key={`${skill}-${index}`}
-            className="bg-[#f0ece5] w-full text-center text-[clamp(0.5rem,0.9vw,1.1rem)] py-[clamp(0.4rem,1.8vw,1rem)] px-2 flex items-center justify-center leading-tight"
+            className="bg-[#f0ece5] font-[SpeziaMedium] w-full text-center text-[clamp(0.5rem,0.9vw,1.1rem)] py-[clamp(0.4rem,1.8vw,1rem)] px-2 flex items-center justify-center leading-tight"
           >
             {skill}
           </div>
