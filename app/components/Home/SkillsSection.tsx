@@ -112,7 +112,7 @@ const SkillsSection = () => {
       ScrollTrigger.create({
         invalidateOnRefresh: true,
         trigger: ".skills",
-        start: "top 60%",          // starts animating when .skills enters upper viewport
+        start: "top top",          // starts animating when .skills enters upper viewport
         end: `+=${vh * 2.5}`,    
         scrub: 1,
         onUpdate: (self) => {
