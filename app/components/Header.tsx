@@ -75,12 +75,12 @@ const Header = () => {
             </li>
             <li>
               <NavLink
-                to="/process"
+                to="/work"
                 className={({ isActive }) =>
                   `nav-item nav-link ${isActive ? "active" : ""}`
                 }
               >
-                PROCESS
+                WORKS
               </NavLink>
             </li>
             <li>
@@ -156,14 +156,14 @@ const Header = () => {
                 </li>
                 <li className="w-full text-center">
                   <NavLink
-                    to="/process"
+                    to="/work"
                     className={({ isActive }) =>
                       `mobile-menu-item block py-4 text-2xl font-[SpeziaMono] transition-all duration-300 ${
                         isActive ? "text-black font-bold" : "text-gray-600"
                       }`
                     }
                   >
-                    PROCESS
+                    WORKS
                   </NavLink>
                 </li>
                 <li className="w-full text-center">

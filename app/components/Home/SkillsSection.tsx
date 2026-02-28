@@ -23,11 +23,13 @@ const SkillsSection = () => {
       // gsap.ticker.lagSmoothing(0);
 
       const smoothStep = (p: number) => p * p * (3 - 2 * p);
+      const vh = window.innerHeight;
+
 
       ScrollTrigger.create({
         trigger: ".skills",
-        start: `+=${window.innerHeight * 2.5}`,
-        end: `+=${window.innerHeight * 6}`,
+        start: "top 80%",          // when .skills is 80% from top of viewport
+        end: `+=${vh * 3}`,  
         onEnter: () => {
           gsap.to(".cards", {
             opacity: 1,
@@ -35,20 +37,20 @@ const SkillsSection = () => {
             duration: 0.3,
           });
         },
-        onLeave: () => {
-          gsap.to(".cards", {
-            opacity: 0,
-            pointerEvents: "none",
-            duration: 0.3,
-          });
-        },
-        onEnterBack: () => {
-          gsap.to(".cards", {
-            opacity: 1,
-            pointerEvents: "auto",
-            duration: 0.3,
-          });
-        },
+        // onLeave: () => {
+        //   gsap.to(".cards", {
+        //     opacity: 0,
+        //     pointerEvents: "none",
+        //     duration: 0.3,
+        //   });
+        // },
+        // onEnterBack: () => {
+        //   gsap.to(".cards", {
+        //     opacity: 1,
+        //     pointerEvents: "auto",
+        //     duration: 0.3,
+        //   });
+        // },
         onLeaveBack: () => {
           gsap.to(".cards", {
             opacity: 0,
@@ -60,8 +62,8 @@ const SkillsSection = () => {
 
       const pinTrigger = ScrollTrigger.create({
         trigger: ".skills",
-        start: `+=${window.innerHeight * 3}`,
-        end: `+=${window.innerHeight * 4}`,
+        start: "top top",
+         end: `+=${vh * 2.5}`,
         pin: ".skills",
         // pinSpacing: true,
         onUpdate: (self) => {
@@ -78,8 +80,8 @@ const SkillsSection = () => {
       ScrollTrigger.create({
         invalidateOnRefresh: true,
         trigger: ".skills",
-        start: `+=${window.innerHeight * 3}`,
-        end: `+=${window.innerHeight * 4}`,
+        start: "top top",
+        end: `+=${vh * 2.5}`,
         onLeave: () => {
           const skillsSection = document.querySelector(
             ".skills",
@@ -110,8 +112,8 @@ const SkillsSection = () => {
       ScrollTrigger.create({
         invalidateOnRefresh: true,
         trigger: ".skills",
-        start: `+=${window.innerHeight * 2.5}`,
-        end: `+=${window.innerHeight * 4}`,
+        start: "top 60%",          // starts animating when .skills enters upper viewport
+        end: `+=${vh * 2.5}`,    
         scrub: 1,
         onUpdate: (self) => {
           const progress = self.progress;
@@ -249,13 +251,13 @@ const SkillsSection = () => {
                     "GraphQL",
                     "Microservices",
                   ]}
-                  coverImg="./icons/kokeshi_cross_dark.svg"
+                  coverImg="./icons/square.svg"
                   coverText="Front End"
                   className="flip-card-back"
                 />
                 <SkillCardFront
                   color="#e6d9f5"
-                  coverImg="./icons/kokeshi_cross_dark.svg"
+                  coverImg="./icons/square.svg"
                   coverText="Front End"
                   className="flip-card-front"
                 />
@@ -275,13 +277,13 @@ const SkillsSection = () => {
                     "CI/CD",
                     "NGINX",
                   ]}
-                  coverImg="./icons/kokeshi_cross_dark.svg"
+                  coverImg="./icons/timer.svg"
                   coverText="Back End"
                   className="flip-card-back"
                 />
                 <SkillCardFront
                   color="#ffd1f1"
-                  coverImg="./icons/kokeshi_cross_dark.svg"
+                  coverImg="./icons/timer.svg"
                   coverText="Back End"
                   className="flip-card-front"
                 />
@@ -301,13 +303,13 @@ const SkillsSection = () => {
                     "LLM Deploy",
                     "Anomaly Det.",
                   ]}
-                  coverImg="./icons/kokeshi_cross_dark.svg"
+                  coverImg="./icons/square_circle.svg"
                   coverText="AI/ML"
                   className="flip-card-back"
                 />
                 <SkillCardFront
                   color="#fce0ae"
-                  coverImg="./icons/kokeshi_cross_dark.svg"
+                  coverImg="./icons/square_circle.svg"
                   coverText="AI/ML"
                   className="flip-card-front"
                 />

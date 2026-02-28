@@ -174,7 +174,7 @@ const HeroSection = () => {
               id="hero-card-1"
               className="max-w-[11rem] hero-cards"
               color="#e5daf6"
-              coverImg="./icons/kokeshi_cross_dark.svg"
+              coverImg="./icons/square.svg"
               coverText="FRONT END"
             />
           </div>
@@ -183,7 +183,7 @@ const HeroSection = () => {
               id="hero-card-2"
               className="max-w-[11rem] hero-cards"
               color="#ffd2f3"
-              coverImg="./icons/kokeshi_cross_dark.svg"
+              coverImg="./icons/timer.svg"
               coverText="BACK END"
             />
           </div>
@@ -192,7 +192,7 @@ const HeroSection = () => {
               id="hero-card-3"
               className="max-w-[11rem] hero-cards"
               color="#fcdeac"
-              coverImg="./icons/kokeshi_cross_dark.svg"
+              coverImg="./icons/square_circle.svg"
               coverText="AI/ML"
             />
           </div>
